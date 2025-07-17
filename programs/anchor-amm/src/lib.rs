@@ -19,9 +19,12 @@ pub mod anchor_amm {
         ctx: Context<Initialize>,
         config_id: u64,
         fee: u16,
-        locked: bool,
         authority: Option<Pubkey>
     ) -> Result<()> {
-        ctx.accounts.initialize(config_id, fee, locked, authority, &ctx.bumps)
+        ctx.accounts.initialize(config_id, fee, authority, &ctx.bumps)
+    }
+
+    pub fn deposit(ctx: Context<Deposit>, amount: u64, max_x: u64, max_y: u64) -> Result<()> {
+        ctx.accounts.deposit(amount, max_x, max_y)
     }
 }

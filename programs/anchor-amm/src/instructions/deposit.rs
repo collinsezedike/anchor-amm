@@ -52,7 +52,7 @@ pub struct Deposit<'info> {
     pub depositor_y_ata: Account<'info, TokenAccount>,
 
     #[account(
-        init,
+        init_if_needed,
         payer = depositor,
         associated_token::mint = mint_lp,
         associated_token::authority = depositor

@@ -58,7 +58,6 @@ impl<'info> Initialize<'info> {
         &mut self,
         config_id: u64,
         fee: u16,
-        locked: bool,
         authority: Option<Pubkey>,
         bumps: &InitializeBumps
     ) -> Result<()> {
@@ -68,7 +67,7 @@ impl<'info> Initialize<'info> {
             mint_x: self.mint_x.key(),
             mint_y: self.mint_y.key(),
             fee,
-            locked,
+            locked: false,
             lp_bump: bumps.mint_lp,
             config_bump: bumps.config,
         });
