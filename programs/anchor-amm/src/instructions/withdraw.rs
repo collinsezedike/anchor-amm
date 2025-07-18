@@ -73,7 +73,7 @@ pub struct Withdraw<'info> {
 
 impl<'info> Withdraw<'info> {
     pub fn withdraw(&mut self, amount: u64, min_x: u64, min_y: u64) -> Result<()> {
-        require!(self.config.locked == false, AmmError::PoolLocked);
+        require!(!self.config.locked, AmmError::PoolLocked);
         require!(amount > 0, AmmError::InvalidAmount);
         require!(min_x != 0 || min_y != 0, AmmError::InvalidAmount);
 

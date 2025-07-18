@@ -74,7 +74,7 @@ pub struct Deposit<'info> {
 
 impl<'info> Deposit<'info> {
     pub fn deposit(&mut self, amount: u64, max_x: u64, max_y: u64) -> Result<()> {
-        require!(self.config.locked == false, AmmError::PoolLocked);
+        require!(!self.config.locked, AmmError::PoolLocked);
         require!(amount != 0, AmmError::InvalidAmount);
 
         let (x, y) = match
